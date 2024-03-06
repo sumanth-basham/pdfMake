@@ -8,8 +8,8 @@ def add_notebook_lines_to_pdf(input_pdf_path, output_pdf_path, skip_pages=None):
         skip_pages = []
 
     # Parameters for notebook lines
-    line_distance = 25  # Distance between lines, adjust as needed
-    margin = 50  # Margin for the notebook lines, adjust as needed
+    line_distance = 50  # Distance between lines, adjust as needed
+    margin = 10  # Margin for the notebook lines, adjust as needed
 
     for page_num in range(len(original_pdf)):
         if page_num in skip_pages or any(start <= page_num <= end for start, end in skip_pages):
@@ -28,8 +28,8 @@ def add_notebook_lines_to_pdf(input_pdf_path, output_pdf_path, skip_pages=None):
         new_page.show_pdf_page(clip_rect, original_pdf, page_num)
 
         # Adjusting top and bottom margins for the lines
-        top_margin = line_distance * 2  # Two lines space at the top
-        bottom_margin = original_page.rect.height - line_distance * 2  # Two lines space at the bottom
+        top_margin = line_distance * 1.25  # Two lines space at the top
+        bottom_margin = original_page.rect.height - line_distance * 1.25  # Two lines space at the bottom
 
         # Add horizontal ruled lines across the right half, with top and bottom spacing
         for y in range(int(top_margin), int(bottom_margin), line_distance):
